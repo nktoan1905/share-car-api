@@ -69,6 +69,18 @@ module.exports = {
 					createdAt: new Date(),
 					updatedAt: new Date(),
 				},
+				{
+					codeName: 'UTS1',
+					description: 'Registered the trip',
+					createdAt: new Date(),
+					updatedAt: new Date(),
+				},
+				{
+					codeName: 'UTS2',
+					description: 'Has been rejected by the driver',
+					createdAt: new Date(),
+					updatedAt: new Date(),
+				},
 			],
 			{},
 		);
@@ -82,6 +94,5 @@ module.exports = {
 		 * await queryInterface.bulkDelete('People', null, {});
 		 */
 		await queryInterface.bulkDelete('AllCodes', null, {});
-
 	},
 };

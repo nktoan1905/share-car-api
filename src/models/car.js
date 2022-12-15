@@ -10,13 +10,18 @@ module.exports = (sequelize, DataTypes) => {
 		static associate(models) {
 			// define association here
 			Car.belongsTo(models.User, {
+				as: 'userDetail',
 				foreignKey: 'userId',
+				targetKey: 'id',
 			});
 			Car.belongsTo(models.AllCode, {
+				as:'statusInfo',
 				foreignKey: 'status',
+				targetKey: 'id',
 			});
 			Car.hasMany(models.Trip, {
 				foreignKey: 'carId',
+				targetKey: 'id',
 			});
 		}
 	}

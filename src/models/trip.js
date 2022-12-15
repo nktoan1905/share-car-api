@@ -9,11 +9,16 @@ module.exports = (sequelize, DataTypes) => {
 		 */
 		static associate(models) {
 			Trip.belongsTo(models.Car, {
+				as: 'carInfo',
 				foreignKey: 'carId',
+				targetKey: 'id',
 			});
 			Trip.belongsTo(models.User, {
+				as: 'driverInfo',
 				foreignKey: 'driverId',
+				targetKey: 'id',
 			});
+			Trip.hasMany(models.UserTrip, { foreignKey: 'tripId', targetKey: 'id' });
 		}
 	}
 	Trip.init(

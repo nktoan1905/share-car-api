@@ -9,12 +9,18 @@ module.exports = (sequelize, DataTypes) => {
 		 */
 		static associate(models) {
 			// define association here
-			User.belongsTo(models.AllCode, { as: 'role', oreignKey: { name: 'roleId' } });
+			User.belongsTo(models.AllCode, { as: 'roleData', foreignKey: { name: 'roleId' } });
 			User.hasMany(models.Car, {
 				foreignKey: 'userId',
+				targetKey: 'id',
 			});
 			User.hasMany(models.Trip, {
 				foreignKey: 'driverId',
+				targetKey: 'id',
+			});
+			User.hasMany(models.UserTrip, {
+				foreignKey: 'userId',
+				targetKey: 'id',
 			});
 		}
 	}

@@ -11,7 +11,8 @@ module.exports = (sequelize, DataTypes) => {
 			// define association here
 			District.belongsTo(models.City, {
 				foreignKey: 'cityId',
-				as: 'district',
+				targetKey: 'id',
+				as: 'city',
 			});
 		}
 	}

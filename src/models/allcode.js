@@ -12,6 +12,7 @@ module.exports = (sequelize, DataTypes) => {
 			AllCode.hasOne(models.User, { foreignKey: { name: 'roleId' }, targetKey: 'id' });
 			AllCode.hasOne(models.Car, {
 				foreignKey: 'status',
+				targetKey: 'id',
 			});
 		}
 	}
