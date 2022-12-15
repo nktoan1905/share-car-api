@@ -36,29 +36,9 @@ module.exports = {
 				type: Sequelize.DATE,
 			},
 		});
-		await queryInterface.addConstraint('Trips', {
-			fields: ['driverId'],
-			type: 'foreign key',
-			name: 'driver_have_many_trip',
-			references: {
-				//Required field
-				table: 'Users',
-				field: 'id',
-			},
-		});
-		await queryInterface.addConstraint('Trips', {
-			fields: ['carId'],
-			type: 'foreign key',
-			name: 'driver_have_car',
-			references: {
-				//Required field
-				table: 'Cars',
-				field: 'id',
-			},
-		});
+
 	},
 	async down(queryInterface, Sequelize) {
-		await queryInterface.removeConstraint('Trips', 'driver_have_many_trip');
 		await queryInterface.dropTable('Trips');
 	},
 };

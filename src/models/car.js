@@ -25,20 +25,8 @@ module.exports = (sequelize, DataTypes) => {
 			carName: DataTypes.STRING,
 			maxUser: DataTypes.STRING,
 			img: DataTypes.STRING,
-			status: {
-				type: DataTypes.INTEGER,
-				references: {
-					model: 'AllCode',
-					key: 'id',
-				},
-			},
-			userId: {
-				type: DataTypes.INTEGER,
-				references: {
-					model: 'User',
-					key: 'id',
-				},
-			},
+			status: DataTypes.INTEGER,
+			userId: DataTypes.INTEGER,
 		},
 		{
 			sequelize,

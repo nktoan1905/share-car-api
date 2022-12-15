@@ -8,7 +8,6 @@ const carController = {
 			});
 		}
 		const { status, message, car } = await carServices.createNewCar(req.body, req.user.id);
-		console.log(status, message, car);
 		if (status) {
 			res.status(200).json({
 				message: message,

@@ -18,24 +18,12 @@ module.exports = (sequelize, DataTypes) => {
 	}
 	Trip.init(
 		{
-			driverId: {
-				type: DataTypes.INTEGER,
-				references: {
-					model: 'User',
-					key: 'id',
-				},
-			},
+			driverId: DataTypes.INTEGER,
 			cost: DataTypes.DOUBLE,
 			startAt: DataTypes.DATE,
 			startPosition: DataTypes.STRING,
 			endPosition: DataTypes.STRING,
-			carId: {
-				type: DataTypes.INTEGER,
-				references: {
-					model: 'Car',
-					key: 'id',
-				},
-			},
+			carId: DataTypes.INTEGER,
 		},
 		{
 			sequelize,

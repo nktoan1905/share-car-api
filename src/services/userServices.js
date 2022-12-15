@@ -81,8 +81,6 @@ const userServices = {
 					attributes: ['img', 'email', 'address', 'age', 'phoneNumber'],
 					where: { id: id },
 				});
-
-				console.log(user);
 				if (user) {
 					return resolve({
 						status: true,

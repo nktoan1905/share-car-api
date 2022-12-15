@@ -24,19 +24,9 @@ module.exports = {
 				type: Sequelize.DATE,
 			},
 		});
-		await queryInterface.addConstraint('Districts', {
-			fields: ['cityId'],
-			type: 'foreign key',
-			name: 'city_id_have_many_disctrict',
-			references: {
-				//Required field
-				table: 'Cities',
-				field: 'id',
-			},
-		});
+
 	},
 	async down(queryInterface, Sequelize) {
-		await queryInterface.removeConstraint('Districts', 'city_id_have_many_disctrict');
 		await queryInterface.dropTable('Districts');
 	},
 };

@@ -1,4 +1,5 @@
 import db from '../models';
+import user from '../models/user';
 import tripServices from '../services/tripServices';
 
 const tripController = {
@@ -26,9 +27,8 @@ const tripController = {
 	getAllTrip: async (req, res) => {
 		try {
 			console.log('abc');
-			const trips = await db.Trip.findOne({
-				where: { id: 1 },
-				include: [{ model: db.User }],
+			const trips = await db.Trip.findByFk(2, {
+				include: db.User,
 			});
 			console.log(trips);
 			res.status(200).json({

@@ -4,12 +4,23 @@ const cityServices = {
 	getAllCity: async () => {
 		return new Promise(async (resolve, reject) => {
 			try {
-				const cities = await db.City.findAll({ attributes: ['id', 'name'] });
+				const cities = await db.User.findAll({
+					include: [
+						{
+							model: db.AllCode,
+							as: 'role',
+						},
+					],
+					raw: true,
+					nest: true,
+				});
+				console.log(cities);
 				resolve({
 					message: 'Get all city Successfully!',
 					cities,
 				});
 			} catch (error) {
+				console.log(error);
 				reject(error);
 			}
 		});

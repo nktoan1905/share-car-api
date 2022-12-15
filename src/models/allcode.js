@@ -9,9 +9,7 @@ module.exports = (sequelize, DataTypes) => {
 		 */
 		static associate(models) {
 			// define association here
-			AllCode.hasOne(models.User, {
-				foreignKey: 'roleId',
-			});
+			AllCode.hasOne(models.User, { foreignKey: { name: 'roleId' }, targetKey: 'id' });
 			AllCode.hasOne(models.Car, {
 				foreignKey: 'status',
 			});

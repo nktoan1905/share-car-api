@@ -10,20 +10,15 @@ module.exports = (sequelize, DataTypes) => {
 		static associate(models) {
 			// define association here
 			District.belongsTo(models.City, {
-				foreignKeyConstraint: 'city_id_have_many_disctrict',
+				foreignKey: 'cityId',
+				as: 'district',
 			});
 		}
 	}
 	District.init(
 		{
 			name: DataTypes.STRING,
-			cityId: {
-				type: DataTypes.INTEGER,
-				references: {
-					model: 'City',
-					key: 'id',
-				},
-			},
+			cityId: DataTypes.INTEGER,
 		},
 		{
 			sequelize,

@@ -56,20 +56,13 @@ const authController = {
 				token: refreshToken,
 			});
 			delete user.password;
-			res
-				.status(200)
-				.cookie('refreshToken', refreshToken, {
-					httpOnly: true,
-					secure: false,
-					sameSite: 'strict',
-				})
-				.json({
-					message: message,
-					data: {
-						...user,
-						accessToken,
-					},
-				});
+			res.status(200).json({
+				message: message,
+				data: {
+					...user,
+					accessToken,
+				},
+			});
 		}
 	},
 	refreshToken: async (req, res) => {
@@ -111,12 +104,6 @@ const authController = {
 		});
 	},
 	logout: async (req, res) => {
-		// await db.RefreshToken.destroy({
-		// 	where: {
-		// 		token: req.cookies.refreshToken,
-		// 	},
-		// });
-		// res.clearCookie('refreshToken');
 		res.status(200).json({ status: 'Logout Succeed' });
 	},
 };

@@ -9,17 +9,9 @@ module.exports = (sequelize, DataTypes) => {
 		 */
 		static associate(models) {
 			// define association here
-			User.belongsTo(models.AllCode, {
-				foreignKey: 'roleId',
-			});
+			User.belongsTo(models.AllCode, { as: 'role', oreignKey: { name: 'roleId' } });
 			User.hasMany(models.Car, {
 				foreignKey: 'userId',
-			});
-			User.hasMany(models.UserRate, {
-				foreignKey: 'user_userId_rate',
-			});
-			User.hasMany(models.UserRate, {
-				foreignKey: 'user_driverId',
 			});
 			User.hasMany(models.Trip, {
 				foreignKey: 'driverId',
@@ -41,10 +33,6 @@ module.exports = (sequelize, DataTypes) => {
 			roleId: {
 				type: DataTypes.INTEGER,
 				defaultValue: 2,
-				references: {
-					model: 'AllCode',
-					key: 'id',
-				},
 			},
 		},
 		{

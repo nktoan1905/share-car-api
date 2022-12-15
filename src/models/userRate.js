@@ -10,29 +10,17 @@ module.exports = (sequelize, DataTypes) => {
 		static associate(models) {
 			// define association here
 			UserRate.belongsTo(models.User, {
-				foreignKey: 'user_userId_rate',
+				foreignKey: 'driverId',
 			});
 			UserRate.belongsTo(models.User, {
-				foreignKey: 'user_driverId',
+				foreignKey: 'userId',
 			});
 		}
 	}
 	UserRate.init(
 		{
-			driverId: {
-				type: DataTypes.INTEGER,
-				references: {
-					model: 'User',
-					key: 'id',
-				},
-			},
-			userId: {
-				type: DataTypes.INTEGER,
-				references: {
-					model: 'User',
-					key: 'id',
-				},
-			},
+			driverId: DataTypes.INTEGER,
+			userId: DataTypes.INTEGER,
 			rate: DataTypes.INTEGER,
 		},
 		{
