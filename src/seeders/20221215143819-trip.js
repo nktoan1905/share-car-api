@@ -14,7 +14,7 @@ module.exports = {
 		 */
 
 		await queryInterface.bulkInsert(
-			'trips',
+			'Trips',
 			[
 				{
 					driverId: 7,

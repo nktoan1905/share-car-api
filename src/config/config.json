@@ -1,10 +1,10 @@
 {
   "development": {
-    "username": "root",
-    "password": "123456789",
+    "username": "share_car_user",
+    "password": "VW7w0W5OLdhv1XCYgsSRPlvTsCuuCz0x",
     "database": "share_car",
-    "host": "localhost",
-    "dialect": "mysql",
+    "host": "dpg-cedjs71a6gdvngfph72g-a.singapore-postgres.render.com",
+    "dialect": "postgres",
     "logging": false,
     "query": {
       "raw": true
