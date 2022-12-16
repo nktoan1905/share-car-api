@@ -19,6 +19,7 @@ module.exports = (sequelize, DataTypes) => {
 				targetKey: 'id',
 			});
 			Trip.hasMany(models.UserTrip, { foreignKey: 'tripId', targetKey: 'id' });
+			Trip.belongsTo(models.AllCode, { foreignKey: 'status', as: 'statusInfo' });
 		}
 	}
 	Trip.init(
@@ -29,6 +30,7 @@ module.exports = (sequelize, DataTypes) => {
 			startPosition: DataTypes.STRING,
 			endPosition: DataTypes.STRING,
 			carId: DataTypes.INTEGER,
+			status: DataTypes.INTEGER,
 		},
 		{
 			sequelize,

@@ -94,5 +94,23 @@ const tripController = {
 			});
 		}
 	},
+	handleupdateStatusTrip: async (req, res) => {
+		try {
+			const tripId = req.params.tripId;
+			const { status, message, newStatus } = await tripServices.updateStatusTrip(tripId, req.user.id);
+			if (status) {
+				res.status(200).json({
+					message: message,
+					newStatus: newStatus,
+				});
+			} else {
+				res.status(400).json({
+					message: message,
+				});
+			}
+		} catch (error) {
+			res.status(400).json(error);
+		}
+	},
 };
 export default tripController;

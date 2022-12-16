@@ -27,6 +27,9 @@ module.exports = {
 			carId: {
 				type: Sequelize.INTEGER,
 			},
+			status: {
+				type: Sequelize.INTEGER,
+			},
 			createdAt: {
 				allowNull: false,
 				type: Sequelize.DATE,
@@ -36,7 +39,6 @@ module.exports = {
 				type: Sequelize.DATE,
 			},
 		});
-
 	},
 	async down(queryInterface, Sequelize) {
 		await queryInterface.dropTable('Trips');

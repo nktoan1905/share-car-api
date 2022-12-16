@@ -86,7 +86,7 @@ const tripServices = {
 		return new Promise(async (resolve, reject) => {
 			try {
 				const trips = await db.Trip.findAll({
-					attributes: ['id', 'cost', 'startAt', 'startPosition', 'endPosition'],
+					attributes: ['id', 'cost', 'startAt', 'startPosition', 'endPosition', 'status'],
 					where: {
 						startAt: { [Op.gt]: new Date() },
 					},
@@ -196,6 +196,18 @@ const tripServices = {
 						message: 'This trip has expired',
 					});
 				}
+				if (trip.status === 8) {
+					return resolve({
+						status: false,
+						message: 'This trip has been started',
+					});
+				}
+				if (trip.status === 9) {
+					return resolve({
+						status: false,
+						message: 'This trip has been ended',
+					});
+				}
 				// check số lượng ghế còn không
 				const amountOfuser = await db.UserTrip.count({
 					where: { tripId: trip.id, status: 10 },
@@ -292,6 +304,63 @@ const tripServices = {
 				}
 			} catch (error) {
 				console.log(error);
+				reject(error);
+			}
+		});
+	},
+	updateStatusTrip: async (tripId, userId) => {
+		return new Promise(async (resolve, reject) => {
+			try {
+				const trip = await db.Trip.findByPk(tripId);
+				if (trip == null) {
+					return resolve({
+						status: false,
+						message: 'Trip is not exist.',
+					});
+				}
+				// check xem thằng user này có phải là thằng driver tạo trip đó không
+				if (trip.driverId === userId) {
+					if (trip.status === 7) {
+						await db.Trip.update(
+							{ status: 8 },
+							{
+								where: {
+									id: tripId,
+								},
+							},
+						);
+						resolve({
+							status: true,
+							message: 'Update status successflly',
+							newStatus: 'Starting',
+						});
+					} else if (trip.status === 8) {
+						await db.Trip.update(
+							{ status: 9 },
+							{
+								where: {
+									id: tripId,
+								},
+							},
+						);
+						resolve({
+							status: true,
+							message: 'Update status successflly',
+							newStatus: 'Ending',
+						});
+					} else {
+						resolve({
+							status: false,
+							message: 'Update status failed your trip was end',
+						});
+					}
+				} else {
+					return resolve({
+						status: false,
+						message: 'You are not allowed to update trip',
+					});
+				}
+			} catch (error) {
 				reject(error);
 			}
 		});
