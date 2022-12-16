@@ -1,4 +1,4 @@
-import carServices from '../services/carServices';
+import carServices from '../services/carServices.js';
 
 const carController = {
 	registerNewCar: async (req, res) => {

@@ -1,4 +1,4 @@
-const { default: cityServices } = require('../services/cityServices');
+import cityServices from '../services/cityServices.js';
 
 const cityController = {
 	handleGetAllCityAndDistrictsOfThisCity: async (req, res) => {

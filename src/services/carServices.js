@@ -1,5 +1,5 @@
 import { where } from 'sequelize';
-import db from '../models';
+import db from '../models/index.js';
 
 const carServices = {
 	/**

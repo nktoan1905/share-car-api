@@ -1,6 +1,4 @@
-import db from '../models';
-import user from '../models/user';
-import tripServices from '../services/tripServices';
+import tripServices from '../services/tripServices.js';
 
 const tripController = {
 	createNewTrip: async (req, res) => {

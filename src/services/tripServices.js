@@ -1,6 +1,5 @@
-import db from '../models';
+import db from '../models/index.js';
 import { Op } from 'sequelize';
-import user from '../models/user';
 const tripServices = {
 	createNewTrip: async (userId, data) => {
 		// khi người dùng  đăng kí nhưng role

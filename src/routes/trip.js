@@ -1,6 +1,6 @@
 import express from 'express';
-import tripController from '../controllers/tripController';
-import middlewareController from '../middleware/middlewareController';
+import tripController from '../controllers/tripController.js';
+import middlewareController from '../middleware/middlewareController.js';
 
 const router = express.Router();
 

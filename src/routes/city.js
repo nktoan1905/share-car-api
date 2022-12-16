@@ -1,6 +1,6 @@
 import express from 'express';
 
-import cityController from '../controllers/cityController';
+import cityController from '../controllers/cityController.js';
 
 const router = express.Router();
 

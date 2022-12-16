@@ -1,7 +1,7 @@
 import jwt from 'jsonwebtoken';
 import { json } from 'sequelize';
-import db from '../models';
-import userServices from '../services/userServices';
+import db from '../models/index.js';
+import userServices from '../services/userServices.js';
 
 const authController = {
 	registerUser: async (req, res) => {
