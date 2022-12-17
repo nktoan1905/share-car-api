@@ -209,6 +209,7 @@ const tripServices = {
 					});
 				}
 				// check số lượng ghế còn không
+				//
 				const amountOfuser = await db.UserTrip.count({
 					where: { tripId: trip.id, status: 10 },
 				});
@@ -365,5 +366,38 @@ const tripServices = {
 			}
 		});
 	},
+	getAllTripByDriverId: async (driverId) => {
+		return new Promise(async (resolve, reject) => {
+			try {
+				const trips = await db.Trip.findAll({
+					where: {
+						driverId: driverId,
+					},
+					attributes: ['id', 'cost', 'startAt', 'startPosition', 'endPosition', 'status'],
+					include: [
+						{ model: db.Car, as: 'carInfo', attributes: ['carName', 'maxUser', 'img'] },
+						{ model: db.AllCode, as: 'statusInfo', attributes: ['codeName', 'description'] },
+					],
+					raw: true,
+					nest: true,
+				});
+				if (trips === null) {
+					resolve({
+						status: false,
+						message: "You haven't registed any trip yet",
+					});
+				} else {
+					resolve({
+						status: true,
+						message: 'Get all trip successfully!',
+						trips: trips,
+					});
+				}
+			} catch (error) {
+				reject(error);
+			}
+		});
+	},
 };
+
 export default tripServices;

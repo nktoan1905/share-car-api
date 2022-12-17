@@ -11,6 +11,17 @@ const sequelize = new Sequelize('share_car', 'share_car_user', 'VW7w0W5OLdhv1XCY
 		},
 	},
 });
+// const sequelize = new Sequelize('share_car', 'root', '123456789', {
+// 	host: 'localhost',
+// 	dialect: 'mysql',
+// 	logging: false,
+// 	dialectOptions: {
+// 		ssl: {
+// 			require: true,
+// 			rejectUnauthorized: false,
+// 		},
+// 	},
+// });
 let connectDB = async () => {
 	try {
 		await sequelize.authenticate();

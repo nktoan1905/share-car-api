@@ -8,9 +8,8 @@ const router = express.Router();
 router.post('/register-trip', middlewareController.verifyToken, tripController.createNewTrip);
 
 router.post('/:tripId', middlewareController.verifyToken, tripController.handleOrderTripByUserIdAndTripId);
-
 router.get('/', middlewareController.verifyToken, tripController.getAllTrip);
-
+router.get('/driver/', middlewareController.verifyToken, tripController.handleGetAllTripByDriverId);
 router.get('/:tripId', middlewareController.verifyToken, tripController.handleGetAllUserInTrip);
 
 router.delete('/:tripId', middlewareController.verifyToken, tripController.handleDeleteTripByTripId);
