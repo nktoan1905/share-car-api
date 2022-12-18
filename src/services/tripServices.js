@@ -70,6 +70,7 @@ const tripServices = {
 							startPosition: data.startPosition,
 							endPosition: data.endPosition,
 							carId: data.carId,
+							status: 7
 						});
 						resolve({
 							status: true,
