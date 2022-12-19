@@ -81,7 +81,8 @@ module.exports = {
 					roleId: 2,
 					createdAt: new Date(),
 					updatedAt: new Date(),
-				},				{
+				},
+				{
 					username: 'userc',
 					password: '$2b$10$QHaVAdn3wOA1xQzAaXqPke9JmfD8GLn4ohZGdbpvbURNnEbWcYZ6W',
 					fullName: 'User C',
@@ -125,7 +126,8 @@ module.exports = {
 					roleId: 3,
 					createdAt: new Date(),
 					updatedAt: new Date(),
-				},				{
+				},
+				{
 					username: 'driverc',
 					password: '$2b$10$QHaVAdn3wOA1xQzAaXqPke9JmfD8GLn4ohZGdbpvbURNnEbWcYZ6W',
 					fullName: 'Driver C',

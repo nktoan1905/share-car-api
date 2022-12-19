@@ -130,5 +130,20 @@ const tripController = {
 			res.status(400).json(error);
 		}
 	},
+	handleGetAllTripByUserId: async (req, res) => {
+		try {
+			const userId = req.user.id;
+			const { status, message, trips } = await tripServices.getAllTripByUserId(userId);
+			if (status) {
+				res.status(200).json({ message: message, trips: trips });
+			} else {
+				res.status(400).json({
+					message: message,
+				});
+			}
+		} catch (error) {
+			res.status(400).json(error);
+		}
+	},
 };
 export default tripController;

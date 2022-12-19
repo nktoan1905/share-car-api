@@ -70,7 +70,7 @@ const tripServices = {
 							startPosition: data.startPosition,
 							endPosition: data.endPosition,
 							carId: data.carId,
-							status: 7
+							status: 7,
 						});
 						resolve({
 							status: true,
@@ -90,6 +90,7 @@ const tripServices = {
 					attributes: ['id', 'cost', 'startAt', 'startPosition', 'endPosition', 'status'],
 					where: {
 						startAt: { [Op.gt]: new Date() },
+						status: { [Op.eq]: 7 },
 					},
 					include: [
 						{
@@ -103,9 +104,20 @@ const tripServices = {
 							attributes: ['id', 'carName', 'maxUser', 'img'],
 						},
 					],
+					order: [['id', 'DESC']],
 					raw: true,
 					nest: true,
 				});
+				for (let i = 0; i < trips.length; i++) {
+					const usersInTrip = await db.UserTrip.findAll({
+						where: {
+							tripId: trips[i].id,
+							status: { [Op.eq]: 10 },
+						},
+						attributes: ['id'],
+					});
+					trips[i].userInfo = usersInTrip;
+				}
 				resolve({
 					message: 'Get all trip successfully',
 					trips: trips,
@@ -395,6 +407,40 @@ const tripServices = {
 					});
 				}
 			} catch (error) {
+				reject(error);
+			}
+		});
+	},
+	getAllTripByUserId: async (userId) => {
+		return new Promise(async (resolve, reject) => {
+			try {
+				const trips = await db.UserTrip.findAll({
+					where: {
+						userId: userId,
+					},
+					attributes: ['id', 'tripId', 'status'],
+					include: [
+						{ model: db.Trip, as: 'tripInfo' },
+						{ model: db.AllCode, as: 'statusInfo', attributes: ['id', 'codeName', 'description'] },
+					],
+					order: [['id', 'DESC']],
+					raw: true,
+					nest: true,
+				});
+				if (trips == null) {
+					resolve({
+						status: false,
+						message: 'You must order trips first',
+					});
+				} else {
+					resolve({
+						status: true,
+						message: 'Get all trip successfully!',
+						trips: trips,
+					});
+				}
+			} catch (error) {
+				console.log(error);
 				reject(error);
 			}
 		});

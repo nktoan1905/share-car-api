@@ -15,6 +15,10 @@ module.exports = (sequelize, DataTypes) => {
 				foreignKey: 'status',
 				targetKey: 'id',
 			});
+			AllCode.hasOne(models.UserTrip, {
+				foreignKey: 'status',
+				targetKey: 'id',
+			});
 		}
 	}
 	AllCode.init(

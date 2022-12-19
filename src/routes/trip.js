@@ -10,6 +10,7 @@ router.post('/register-trip', middlewareController.verifyToken, tripController.c
 router.post('/:tripId', middlewareController.verifyToken, tripController.handleOrderTripByUserIdAndTripId);
 router.get('/', middlewareController.verifyToken, tripController.getAllTrip);
 router.get('/driver/', middlewareController.verifyToken, tripController.handleGetAllTripByDriverId);
+router.get('/user/', middlewareController.verifyToken, tripController.handleGetAllTripByUserId);
 router.get('/:tripId', middlewareController.verifyToken, tripController.handleGetAllUserInTrip);
 
 router.delete('/:tripId', middlewareController.verifyToken, tripController.handleDeleteTripByTripId);

@@ -11,6 +11,8 @@ module.exports = (sequelize, DataTypes) => {
 			// define association here
 			UserTrip.belongsTo(models.User, { foreignKey: 'userId', as: 'userInfo' });
 			UserTrip.belongsTo(models.Trip, { foreignKey: 'tripId', as: 'tripInfo' });
+			UserTrip.belongsTo(models.AllCode, { foreignKey: 'status', as: 'statusInfo' });
+
 		}
 	}
 	UserTrip.init(
