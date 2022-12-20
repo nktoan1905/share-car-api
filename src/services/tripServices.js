@@ -420,8 +420,14 @@ const tripServices = {
 					},
 					attributes: ['id', 'tripId', 'status'],
 					include: [
-						{ model: db.Trip, as: 'tripInfo' },
-						{ model: db.AllCode, as: 'statusInfo', attributes: ['id', 'codeName', 'description'] },
+						{
+							model: db.Trip,
+							as: 'tripInfo',
+							include: [
+								{ model: db.User, as: 'driverInfo' },
+								{ model: db.Car, as: 'carInfo' },
+							],
+						},
 					],
 					order: [['id', 'DESC']],
 					raw: true,
