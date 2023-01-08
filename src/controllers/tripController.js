@@ -57,7 +57,7 @@ const tripController = {
 	handleOrderTripByUserIdAndTripId: async (req, res) => {
 		try {
 			const tripId = req.params.tripId;
-			const { status, message } = await tripServices.orderTripByUserIdAndTripId(tripId, req.user.id);
+			const { status, message } = await tripServices.orderTripByUserIdAndTripId(tripId, req.user.id, req.body);
 
 			if (status) {
 				res.status(200).json({

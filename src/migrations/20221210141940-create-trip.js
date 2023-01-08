@@ -18,11 +18,17 @@ module.exports = {
 			startAt: {
 				type: Sequelize.DATE,
 			},
-			startPosition: {
-				type: Sequelize.STRING,
+			latStartPosition: {
+				type: Sequelize.DOUBLE,
 			},
-			endPosition: {
-				type: Sequelize.STRING,
+			lngStartPosition: {
+				type: Sequelize.DOUBLE,
+			},
+			latEndPosition: {
+				type: Sequelize.DOUBLE,
+			},
+			lngEndPosition: {
+				type: Sequelize.DOUBLE,
 			},
 			carId: {
 				type: Sequelize.INTEGER,

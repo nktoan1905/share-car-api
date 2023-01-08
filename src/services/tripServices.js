@@ -7,7 +7,9 @@ const tripServices = {
 		 * data {
 		 * cost,
 		 * startAt,
-		 * startPosition,
+		 * latStartPosition,
+		 * lngStartPosition,
+		 *
 		 * endPosition,
 		 * carId
 		 * }
@@ -67,8 +69,10 @@ const tripServices = {
 							driverId: userId,
 							cost: data.cost,
 							startAt: data.startAt,
-							startPosition: data.startPosition,
-							endPosition: data.endPosition,
+							latStartPosition: data.startPosition.lat,
+							lngStartPosition: data.startPosition.lng,
+							latEndPosition: data.endPosition.lat,
+							lngEndPosition: data.endPosition.lng,
 							carId: data.carId,
 							status: 7,
 						});
@@ -87,7 +91,16 @@ const tripServices = {
 		return new Promise(async (resolve, reject) => {
 			try {
 				const trips = await db.Trip.findAll({
-					attributes: ['id', 'cost', 'startAt', 'startPosition', 'endPosition', 'status'],
+					attributes: [
+						'id',
+						'cost',
+						'startAt',
+						'latStartPosition',
+						'lngStartPosition',
+						'latEndPosition',
+						'lngEndPosition',
+						'status',
+					],
 					where: {
 						startAt: { [Op.gt]: new Date() },
 						status: { [Op.eq]: 7 },
@@ -175,7 +188,7 @@ const tripServices = {
 			}
 		});
 	},
-	orderTripByUserIdAndTripId: async (tripId, userId) => {
+	orderTripByUserIdAndTripId: async (tripId, userId, data) => {
 		return new Promise(async (resolve, reject) => {
 			try {
 				// check tripId có tồn tại ko
@@ -249,6 +262,7 @@ const tripServices = {
 				await db.UserTrip.create({
 					tripId: trip.id,
 					userId: userId,
+					
 					status: 10,
 				});
 				resolve({
@@ -386,7 +400,16 @@ const tripServices = {
 					where: {
 						driverId: driverId,
 					},
-					attributes: ['id', 'cost', 'startAt', 'startPosition', 'endPosition', 'status'],
+					attributes: [
+						'id',
+						'cost',
+						'startAt',
+						'latStartPosition',
+						'lngStartPosition',
+						'latEndPosition',
+						'lngEndPosition',
+						'status',
+					],
 					include: [
 						{ model: db.Car, as: 'carInfo', attributes: ['carName', 'maxUser', 'img'] },
 						{ model: db.AllCode, as: 'statusInfo', attributes: ['codeName', 'description'] },

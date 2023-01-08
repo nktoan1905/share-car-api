@@ -12,13 +12,14 @@ module.exports = (sequelize, DataTypes) => {
 			UserTrip.belongsTo(models.User, { foreignKey: 'userId', as: 'userInfo' });
 			UserTrip.belongsTo(models.Trip, { foreignKey: 'tripId', as: 'tripInfo' });
 			UserTrip.belongsTo(models.AllCode, { foreignKey: 'status', as: 'statusInfo' });
-
 		}
 	}
 	UserTrip.init(
 		{
 			tripId: DataTypes.INTEGER,
 			userId: DataTypes.INTEGER,
+			latDownLocations: DataTypes.DOUBLE,
+			lngDownLocations: DataTypes.DOUBLE,
 			status: DataTypes.INTEGER,
 		},
 		{

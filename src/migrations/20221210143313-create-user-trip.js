@@ -15,6 +15,12 @@ module.exports = {
 			userId: {
 				type: Sequelize.INTEGER,
 			},
+			latDownLocations: {
+				type: Sequelize.DOUBLE,
+			},
+			lngDownLocations: {
+				type: Sequelize.DOUBLE,
+			},
 			status: {
 				type: Sequelize.INTEGER,
 			},
@@ -27,10 +33,8 @@ module.exports = {
 				type: Sequelize.DATE,
 			},
 		});
-
 	},
 	async down(queryInterface, Sequelize) {
-
 		await queryInterface.dropTable('UserTrips');
 	},
 };
