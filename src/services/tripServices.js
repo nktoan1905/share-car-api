@@ -18,7 +18,7 @@ const tripServices = {
 		return new Promise(async (resolve, reject) => {
 			try {
 				// check role của driverId có phải là 3 không
-				console.log(new Date());
+				console.log(new Date(data.startAt).toISOString());
 				const roleOfuserId = await db.User.findOne({
 					where: { id: userId },
 					attributes: ['roleId'],
@@ -70,7 +70,7 @@ const tripServices = {
 						const newTrip = await db.Trip.create({
 							driverId: userId,
 							cost: data.cost,
-							startAt: data.startAt,
+							startAt: new Date(data.startAt).toISOString(),
 							latStartPosition: data.latStartPosition,
 							lngStartPosition: data.lngStartPosition,
 							startPosition: data.startPosition,
@@ -87,6 +87,7 @@ const tripServices = {
 					}
 				}
 			} catch (error) {
+				console.log(error);
 				reject(error);
 			}
 		});
@@ -108,7 +109,7 @@ const tripServices = {
 						'status',
 					],
 					where: {
-						startAt: { [Op.gt]: new Date() },
+						// startAt: { [Op.gt]: new Date() },
 						status: { [Op.eq]: 7 },
 					},
 					include: [
@@ -137,6 +138,7 @@ const tripServices = {
 					});
 					trips[i].userInfo = usersInTrip;
 				}
+				// console.log(trips);
 				resolve({
 					message: 'Get all trip successfully',
 					trips: trips,
