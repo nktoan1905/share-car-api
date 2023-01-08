@@ -1,5 +1,6 @@
 import db from '../models/index.js';
 import { Op } from 'sequelize';
+import { date } from 'joi';
 const tripServices = {
 	createNewTrip: async (userId, data) => {
 		// khi người dùng  đăng kí nhưng role
@@ -17,6 +18,7 @@ const tripServices = {
 		return new Promise(async (resolve, reject) => {
 			try {
 				// check role của driverId có phải là 3 không
+				console.log(new Date());
 				const roleOfuserId = await db.User.findOne({
 					where: { id: userId },
 					attributes: ['roleId'],
@@ -69,11 +71,11 @@ const tripServices = {
 							driverId: userId,
 							cost: data.cost,
 							startAt: data.startAt,
-							latStartPosition: data.lat,
-							lngStartPosition: data.lng,
+							latStartPosition: data.latStartPosition,
+							lngStartPosition: data.lngStartPosition,
 							startPosition: data.startPosition,
-							latEndPosition: data,
-							lngEndPosition: data,
+							latEndPosition: data.latEndPosition,
+							lngEndPosition: data.lngEndPosition,
 							endPosition: data.startPosition,
 							carId: data.carId,
 							status: 7,

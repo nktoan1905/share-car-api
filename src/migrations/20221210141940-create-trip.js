@@ -16,7 +16,7 @@ module.exports = {
 				type: Sequelize.DOUBLE,
 			},
 			startAt: {
-				type: Sequelize.DATE,
+				type: Sequelize.STRING,
 			},
 			latStartPosition: {
 				type: Sequelize.DOUBLE,

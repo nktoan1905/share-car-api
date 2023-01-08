@@ -26,7 +26,7 @@ module.exports = (sequelize, DataTypes) => {
 		{
 			driverId: DataTypes.INTEGER,
 			cost: DataTypes.DOUBLE,
-			startAt: DataTypes.DATE,
+			startAt: DataTypes.STRING,
 			latStartPosition: DataTypes.DOUBLE,
 			lngStartPosition: DataTypes.DOUBLE,
 			startPosition: DataTypes.STRING,
