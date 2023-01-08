@@ -24,11 +24,17 @@ module.exports = {
 			lngStartPosition: {
 				type: Sequelize.DOUBLE,
 			},
+			startPosition: {
+				type: Sequelize.STRING,
+			},
 			latEndPosition: {
 				type: Sequelize.DOUBLE,
 			},
 			lngEndPosition: {
 				type: Sequelize.DOUBLE,
+			},
+			endPosition: {
+				type: Sequelize.STRING,
 			},
 			carId: {
 				type: Sequelize.INTEGER,

@@ -15,11 +15,14 @@ module.exports = {
 			userId: {
 				type: Sequelize.INTEGER,
 			},
-			latDownLocations: {
+			latDownLocation: {
 				type: Sequelize.DOUBLE,
 			},
-			lngDownLocations: {
+			lngDownLocation: {
 				type: Sequelize.DOUBLE,
+			},
+			downLocation: {
+				type: Sequelize.STRING,
 			},
 			status: {
 				type: Sequelize.INTEGER,

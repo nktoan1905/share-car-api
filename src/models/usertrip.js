@@ -18,8 +18,9 @@ module.exports = (sequelize, DataTypes) => {
 		{
 			tripId: DataTypes.INTEGER,
 			userId: DataTypes.INTEGER,
-			latDownLocations: DataTypes.DOUBLE,
-			lngDownLocations: DataTypes.DOUBLE,
+			latDownLocation: DataTypes.DOUBLE,
+			lngDownLocation: DataTypes.DOUBLE,
+			downLocation: DataTypes.STRING,
 			status: DataTypes.INTEGER,
 		},
 		{

@@ -69,10 +69,12 @@ const tripServices = {
 							driverId: userId,
 							cost: data.cost,
 							startAt: data.startAt,
-							latStartPosition: data.startPosition.lat,
-							lngStartPosition: data.startPosition.lng,
-							latEndPosition: data.endPosition.lat,
-							lngEndPosition: data.endPosition.lng,
+							latStartPosition: data.lat,
+							lngStartPosition: data.lng,
+							startPosition: data.startPosition,
+							latEndPosition: data,
+							lngEndPosition: data,
+							endPosition: data.startPosition,
 							carId: data.carId,
 							status: 7,
 						});
@@ -97,8 +99,10 @@ const tripServices = {
 						'startAt',
 						'latStartPosition',
 						'lngStartPosition',
+						'startPosition',
 						'latEndPosition',
 						'lngEndPosition',
+						'endPosition',
 						'status',
 					],
 					where: {
@@ -262,7 +266,9 @@ const tripServices = {
 				await db.UserTrip.create({
 					tripId: trip.id,
 					userId: userId,
-					
+					latDownLocation: data.latDownLocation,
+					lngDownLocation: data.lngDownLocation,
+					downLocation: data.downLocation,
 					status: 10,
 				});
 				resolve({
