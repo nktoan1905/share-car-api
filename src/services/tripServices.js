@@ -18,7 +18,6 @@ const tripServices = {
 		return new Promise(async (resolve, reject) => {
 			try {
 				// check role của driverId có phải là 3 không
-				console.log(new Date(data.startAt).toISOString());
 				const roleOfuserId = await db.User.findOne({
 					where: { id: userId },
 					attributes: ['roleId'],
@@ -70,7 +69,7 @@ const tripServices = {
 						const newTrip = await db.Trip.create({
 							driverId: userId,
 							cost: data.cost,
-							startAt: new Date(data.startAt).toISOString(),
+							startAt: data.startAt,
 							latStartPosition: data.latStartPosition,
 							lngStartPosition: data.lngStartPosition,
 							startPosition: data.startPosition,
