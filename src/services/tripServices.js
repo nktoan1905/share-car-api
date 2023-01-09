@@ -133,7 +133,6 @@ const tripServices = {
 							tripId: trips[i].id,
 							status: { [Op.eq]: 10 },
 						},
-						attributes: ['id'],
 					});
 					trips[i].userInfo = usersInTrip;
 				}
