@@ -75,7 +75,7 @@ const tripServices = {
 							startPosition: data.startPosition,
 							latEndPosition: data.latEndPosition,
 							lngEndPosition: data.lngEndPosition,
-							endPosition: data.startPosition,
+							endPosition: data.endPosition,
 							carId: data.carId,
 							status: 7,
 						});
