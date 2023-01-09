@@ -136,7 +136,6 @@ const tripServices = {
 					});
 					trips[i].userInfo = usersInTrip;
 				}
-				// console.log(trips);
 				resolve({
 					message: 'Get all trip successfully',
 					trips: trips,
@@ -451,7 +450,7 @@ const tripServices = {
 					where: {
 						userId: userId,
 					},
-					attributes: ['id', 'tripId', 'status'],
+					attributes: ['id', 'tripId','downLocation', "latDownLocation", "lngDownLocation", 'status'],
 					include: [
 						{
 							model: db.Trip,
