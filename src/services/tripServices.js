@@ -415,8 +415,10 @@ const tripServices = {
 						'startAt',
 						'latStartPosition',
 						'lngStartPosition',
+						'startPosition',
 						'latEndPosition',
 						'lngEndPosition',
+						'endPosition',
 						'status',
 					],
 					include: [
