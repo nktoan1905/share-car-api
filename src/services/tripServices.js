@@ -221,12 +221,12 @@ const tripServices = {
 					});
 				}
 				// check xem startAt có năm trong quá khứ không
-				if (trip.startAt < new Date()) {
-					return resolve({
-						status: false,
-						message: 'This trip has expired',
-					});
-				}
+				// if (trip.startAt < new Date()) {
+				// 	return resolve({
+				// 		status: false,
+				// 		message: 'This trip has expired',
+				// 	});
+				// }
 				if (trip.status === 8) {
 					return resolve({
 						status: false,
@@ -267,9 +267,9 @@ const tripServices = {
 				await db.UserTrip.create({
 					tripId: trip.id,
 					userId: userId,
-					latDownLocation: data.latDownLocation,
-					lngDownLocation: data.lngDownLocation,
-					downLocation: data.downLocation,
+					latDownLocation: data.latDownLocation || trip.latEndPosition,
+					lngDownLocation: data.lngDownLocation || trip.lngEndPosition,
+					downLocation: data.downLocation || trip.endPosition,
 					status: 10,
 				});
 				resolve({
@@ -450,7 +450,7 @@ const tripServices = {
 					where: {
 						userId: userId,
 					},
-					attributes: ['id', 'tripId','downLocation', "latDownLocation", "lngDownLocation", 'status'],
+					attributes: ['id', 'tripId', 'downLocation', 'latDownLocation', 'lngDownLocation', 'status'],
 					include: [
 						{
 							model: db.Trip,
