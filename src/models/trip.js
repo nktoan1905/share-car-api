@@ -33,6 +33,7 @@ module.exports = (sequelize, DataTypes) => {
 			latEndPosition: DataTypes.DOUBLE,
 			lngEndPosition: DataTypes.DOUBLE,
 			endPosition: DataTypes.STRING,
+			area: DataTypes.DOUBLE,
 			carId: DataTypes.INTEGER,
 			status: DataTypes.INTEGER,
 		},

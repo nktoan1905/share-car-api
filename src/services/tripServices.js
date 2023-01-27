@@ -76,6 +76,7 @@ const tripServices = {
 							latEndPosition: data.latEndPosition,
 							lngEndPosition: data.lngEndPosition,
 							endPosition: data.endPosition,
+							area: data.area,
 							carId: data.carId,
 							status: 7,
 						});
@@ -105,6 +106,7 @@ const tripServices = {
 						'latEndPosition',
 						'lngEndPosition',
 						'endPosition',
+						'area',
 						'status',
 					],
 					where: {
@@ -417,6 +419,7 @@ const tripServices = {
 						'latEndPosition',
 						'lngEndPosition',
 						'endPosition',
+						'area',
 						'status',
 					],
 					include: [

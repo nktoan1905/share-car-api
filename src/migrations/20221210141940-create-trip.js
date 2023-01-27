@@ -36,6 +36,9 @@ module.exports = {
 			endPosition: {
 				type: Sequelize.STRING,
 			},
+			area: {
+				type: Sequelize.DOUBLE,
+			},
 			carId: {
 				type: Sequelize.INTEGER,
 			},
