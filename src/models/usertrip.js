@@ -21,6 +21,7 @@ module.exports = (sequelize, DataTypes) => {
 			latDownLocation: DataTypes.DOUBLE,
 			lngDownLocation: DataTypes.DOUBLE,
 			downLocation: DataTypes.STRING,
+			newCost: DataTypes.DOUBLE,
 			status: DataTypes.INTEGER,
 		},
 		{

@@ -24,6 +24,9 @@ module.exports = {
 			downLocation: {
 				type: Sequelize.STRING,
 			},
+			newCost: {
+				type: Sequelize.DOUBLE,
+			},
 			status: {
 				type: Sequelize.INTEGER,
 			},

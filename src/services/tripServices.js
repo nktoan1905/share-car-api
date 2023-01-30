@@ -272,6 +272,7 @@ const tripServices = {
 					latDownLocation: data.latDownLocation || trip.latEndPosition,
 					lngDownLocation: data.lngDownLocation || trip.lngEndPosition,
 					downLocation: data.downLocation || trip.endPosition,
+					newCost: data.newCost,
 					status: 10,
 				});
 				resolve({
@@ -327,7 +328,6 @@ const tripServices = {
 						};
 						data.push(obj);
 					}
-					console.log(data);
 					resolve({
 						status: true,
 						message: 'Get all user in trip successfully',
@@ -453,7 +453,7 @@ const tripServices = {
 					where: {
 						userId: userId,
 					},
-					attributes: ['id', 'tripId', 'downLocation', 'latDownLocation', 'lngDownLocation', 'status'],
+					attributes: ['id', 'tripId', 'downLocation', 'latDownLocation', 'lngDownLocation', 'newCost', 'status'],
 					include: [
 						{
 							model: db.Trip,
